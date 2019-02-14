@@ -15,6 +15,10 @@ using newProj.API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Diagnostics;
+using System.Net;
+using Microsoft.AspNetCore.Http;
+using newProj.API.Helpers;
 
 namespace newproj.API
 {
@@ -57,7 +61,15 @@ namespace newproj.API
             }
             else
             {
-                // app.UseHsts();
+                app.UseExceptionHandler(builder => builder.Run(async context =>
+                {
+                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    var error = context.Features.Get<IExceptionHandlerFeature>();
+                    context.Response.ApplicationError(error.Error.Message);
+                    if(error!=null){
+                        await context.Response.WriteAsync(error.Error.Message);
+                    }
+                }));
             }
 
             //   app.UseHttpsRedirection();
