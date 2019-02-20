@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Http;
 
 namespace newProj.API.Helpers
@@ -10,5 +11,14 @@ namespace newProj.API.Helpers
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add("Access-Control-Allow-Origin", "*");
         }
+
+        public static int FindAge(this DateTime birthDate)
+        {
+            var today = DateTime.Today;
+            // Calculate the age.
+            var age = today.Year - birthDate.Year;
+            return age;
+        }
+
     }
 }
