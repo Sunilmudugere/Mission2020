@@ -23,6 +23,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MemberDetailedComponent } from './member-detailed/member-detailed.component';
 import { MemberDetailResolver } from './_resolver/MemberDetailResolver';
 import { MemberListResolver } from './_resolver/MemberListResolver';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditProfileResolver } from './_resolver/editProfileResolver';
+import { UnSavedGuard } from './_guard/unSavedGuard';
 
 export function tokenGetter(){
     return localStorage.getItem('token');
@@ -37,7 +40,8 @@ export function tokenGetter(){
       MessagesComponent,
       MemberListComponent,
       MemberCardComponent,
-      MemberDetailedComponent
+      MemberDetailedComponent,
+      EditProfileComponent
    ],
    imports: [
       BrowserModule,
@@ -47,12 +51,12 @@ export function tokenGetter(){
       RouterModule.forRoot(appRoutes),
       TabsModule.forRoot(),
       JwtModule.forRoot({
-          config:{
-              tokenGetter:tokenGetter,
-              whitelistedDomains:['localhost:5000'],
-              blacklistedRoutes:['localhost:5000/api/auth']
-          }
-      })
+        config:{
+            tokenGetter:tokenGetter,
+            whitelistedDomains:['localhost:5000'],
+            blacklistedRoutes:['localhost:5000/api/auth']
+        }
+    })
    ],
    providers: [
       AuthService,
@@ -61,7 +65,9 @@ export function tokenGetter(){
       AuthGuard,
       UserService,
       MemberDetailResolver,
-      MemberListResolver
+      MemberListResolver,
+      EditProfileResolver,
+      UnSavedGuard
    ],
    bootstrap: [
       AppComponent
