@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { EditProfileComponent } from "../edit-profile/edit-profile.component";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class UnSavedGuard implements CanDeactivate<EditProfileComponent> {
