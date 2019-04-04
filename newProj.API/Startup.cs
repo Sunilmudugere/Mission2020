@@ -82,7 +82,15 @@ namespace newproj.API
             //Seeder.SeedUsers();
             app.UseCors(y => y.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
-            app.UseMvc();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            app.UseMvc(routes =>{ routes.MapSpaFallbackRoute(
+                name:"Spa-FallBack",
+                defaults: new { Controller = "FallBack", Action = "Index"}
+            );
+
+            });
         }
     }
 }
