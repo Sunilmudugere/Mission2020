@@ -1,0 +1,18 @@
+
+<h3>Version {{major}}.{{minor}}</h3>
+<div>
+child Changed<input type="text" [(ngModel)]="child"/><button (click)="childUpdated()">Update</button>
+</div>
+
+<h4>Change log:</h4>
+<ul>
+  <li *ngFor="let change of changeLog">{{change}}</li>
+</ul>
+
+<div>
+    <h3>Countdown to Liftoff (via local variable)</h3>
+    <button (click)="start()">Start</button>
+    <button (click)="stop()">Stop</button>
+    <!-- <div class="seconds">{{timer.seconds}}</div> -->
+    <app-countdown-timer></app-countdown-timer>
+</div>

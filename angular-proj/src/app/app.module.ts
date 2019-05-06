@@ -26,6 +26,8 @@ import { MemberListResolver } from './_resolver/MemberListResolver';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditProfileResolver } from './_resolver/editProfileResolver';
 import { UnSavedGuard } from './_guard/unSavedGuard';
+import { CountDownnComponent } from './countDownn/countDownn.component';
+import { TestComponent } from './Test/Test.component';
 
 export function tokenGetter(){
     return localStorage.getItem('token');
@@ -41,7 +43,9 @@ export function tokenGetter(){
       MemberListComponent,
       MemberCardComponent,
       MemberDetailedComponent,
-      EditProfileComponent
+      EditProfileComponent,
+      TestComponent,
+      CountDownnComponent
    ],
    imports: [
       BrowserModule,

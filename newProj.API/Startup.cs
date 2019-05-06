@@ -40,6 +40,7 @@ namespace newproj.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(opt =>
             opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddTransient<Seed>();
+            services.BuildServiceProvider().GetService<DataContext>().Database.EnsureCreated();
             services.AddCors();
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();

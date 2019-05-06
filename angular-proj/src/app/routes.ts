@@ -10,9 +10,11 @@ import { MemberListResolver } from './_resolver/MemberListResolver';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditProfileResolver } from './_resolver/editProfileResolver';
 import { UnSavedGuard } from './_guard/unSavedGuard';
+import { TestComponent } from './Test/Test.component';
 
 export const appRoutes: Routes = [
   { path:'home', component:HomeComponent },
+  { path:'test', component:TestComponent },
   { path:'members', component:MemberListComponent, canActivate:[AuthGuard] ,
   resolve:{users:MemberListResolver}},
   { path:'members/:id', component:MemberDetailedComponent, canActivate:[AuthGuard],

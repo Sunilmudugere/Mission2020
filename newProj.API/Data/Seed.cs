@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using newProj.API.Models;
 using Newtonsoft.Json;
 
@@ -14,6 +15,7 @@ namespace newProj.API.Data
 
         public void SeedUsers()
         {
+            if(_context.Users.Any()){
             var UserJsonData = System.IO.File.ReadAllText("Data/UserSeedData.json");
             var UserData = JsonConvert.DeserializeObject<List<User>>(UserJsonData);
 
@@ -27,6 +29,7 @@ namespace newProj.API.Data
                 userInfo.UserName = userInfo.UserName.ToLower();
                 _context.Users.Add(userInfo);
                 _context.SaveChanges();
+            }
             }
         }
 

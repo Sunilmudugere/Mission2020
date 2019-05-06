@@ -9,9 +9,26 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
   registerMode = false;
-  constructor() { }
-
+  Sunil:testModel;
+  
+  constructor() {
+    this.Sunil = new testModel();
+    this.Sunil.firstName = "Sunil"
+    this.Sunil.secondName = "MP"
+   }
+   major = 1;
+   minor = 23;
+   childValue = "You are a kid";
+   newMinor() {
+     this.minor++;
+   }
+  
+   newMajor() {
+     this.major++;
+     this.minor = 0;
+   }
   ngOnInit() {
+
   }
   
   registerModeToggle() {
@@ -21,4 +38,12 @@ export class HomeComponent implements OnInit {
   cancelRegister(registerMode: boolean) {
     this.registerMode = registerMode;
   }
+  onChildUpdate(valueOfChild:any){
+    this.childValue = valueOfChild;
+  }
+}
+
+export class testModel{
+  firstName: string;
+  secondName: string;
 }
